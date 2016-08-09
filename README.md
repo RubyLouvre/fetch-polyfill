@@ -1,8 +1,13 @@
 # fetch-polyfill
 fetch polyfill which supports all mainstream browsers, even  IE6, IE7, IE8.....
 
+```
 $ npm install fetch-polyfill2 --save
-$ npm install promise -- save
+$ npm install bluebird -- save
+$ npm install json3 -- save
+```
+
+![](flow.jpg)
 
 ### HTML
 
