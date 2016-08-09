@@ -49,7 +49,7 @@ function convertBody(body, to) {
     } else if (map[to] && map[to][from]) {
         return map[to][from](body)
     } else {
-        return Promise.reject(new Error('Convertion from ' + from + '} to ' + to + ' not supported'))
+        return Promise.reject(new Error('Convertion from ' + from + ' to ' + to + ' not supported'))
     }
 }
 
