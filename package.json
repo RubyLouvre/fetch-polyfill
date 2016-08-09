@@ -1,5 +1,5 @@
 {
-    "name": "fetch-polyfill",
+    "name": "fetch-polyfill2",
     "version": "0.0.1",
     "description": "fetch polyfill which supports all mainstream browsers, even IE6, IE7, IE8.....",
     "main": "dist/index.js",

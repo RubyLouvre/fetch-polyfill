@@ -1,6 +1,9 @@
 # fetch-polyfill
 fetch polyfill which supports all mainstream browsers, even  IE6, IE7, IE8.....
 
+$ npm install fetch-polyfill --save
+$ npm install promise--save
+
 ### HTML
 
 ```javascript
