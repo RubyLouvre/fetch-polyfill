@@ -87,6 +87,18 @@ fetch('/avatars', {
 ```
 
 ###IE6-7 cors
+
+涉及到的参数
+
+jsonpCallbackFunction :  后端生成的函数名, 不传自动生成,与jQuery一致
+jsonpCallback: 链接中的名字,不传为`callback`,与jQuery一致
+charset: 设置script的字符集
+
+>所有情况下,想跨域,都需要手动设置 credentials: 'include'
+>所有情况下,如果想发送请求,想带着cookie, 都需要设置  credentials: 'include'
+
+
+
 ```javascript
 fetch('/users', { //jsonp!!!
   credentials: 'include',
@@ -96,3 +108,20 @@ fetch('/users', { //jsonp!!!
 
 })
 ```
+
+###使用fetch下载HTML乱码问题
+
+```
+fetch('http://tieba.baidu.com')
+    .then(res=> res.blob())
+    .then(blob => {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var text = reader.result;
+          console.log(text)
+        }
+        reader.readAsText(blob, 'GBK') //或 UTF8,逐个试
+    })
+```
+
+更多用法见这里 http://www.w3ctech.com/topic/854
