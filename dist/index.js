@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
 	else if(typeof exports === 'object')
-		exports["avalon"] = factory();
+		exports["fetch"] = factory();
 	else
-		root["avalon"] = factory();
+		root["fetch"] = factory();
 })(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -135,7 +135,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            reject(new TypeError('Network request failed'))
 	        })
 	        xhr.on('timeout', function () {
-	            reject(new TypeError('Network request failed'))
+	            reject(new TypeError('Network request timeout'))
 	        })
 
 	        xhr.open(request.method, request.url, true)
@@ -166,7 +166,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function Request(input, options) {
 	    options = options || {}
 	    var body = options.body
-	    if (Request instanceof input) {
+	    if (input instanceof Request) {
 	        if (input.bodyUsed) {
 	            throw new TypeError('Already read')
 	        }
@@ -189,7 +189,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (options.headers || !this.headers) {
 	        this.headers = new Headers(options.headers)
 	    }
-	    this.method = (options.method || this.method || 'GET').upperCase()
+	    this.method = (options.method || this.method || 'GET').toUpperCase()
 	    this.mode = options.mode || this.mode || null
 	    this.referrer = null
 
@@ -203,7 +203,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return new Request(this)
 	}
 
-	Body.call(Request.prototype)
+	var F = function(){} 
+	F.prototype = Body.prototype 
+	Request.prototype = new F() 
 
 	module.exports = Request
 
@@ -394,7 +396,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else if (map[to] && map[to][from]) {
 	        return map[to][from](body)
 	    } else {
-	        return Promise.reject(new Error('Convertion from ' + from + '} to ' + to + ' not supported'))
+	        return Promise.reject(new Error('Convertion from ' + from + ' to ' + to + ' not supported'))
 	    }
 	}
 
@@ -533,7 +535,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this._initBody(bodyInit)
 	}
 
-	Body.call(Response.prototype)
+	var F = function(){} 
+	F.prototype = Body.prototype 
+	Response.prototype = new F() 
 
 	Response.prototype.clone = function () {
 	    return new Response(this._bodyInit, {
@@ -618,7 +622,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	}
 
-
+	module.exports = Transport
 
 /***/ },
 /* 7 */

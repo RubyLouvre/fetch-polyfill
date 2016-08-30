@@ -50,3 +50,4 @@ p.abort = function () {
     }
 }
 
+module.exports = Transport

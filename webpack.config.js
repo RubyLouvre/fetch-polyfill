@@ -16,7 +16,7 @@ module.exports = {
         path: path.join(__dirname, 'dist'),
         filename: 'index.js',
         libraryTarget: 'umd',
-        library: 'avalon'
+        library: 'fetch'
     }, //页面引用的文件
      resolve: {
         extensions: ['.js', ''],

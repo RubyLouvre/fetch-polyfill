@@ -4,7 +4,7 @@ var Body = require('./Body')
 function Request(input, options) {
     options = options || {}
     var body = options.body
-    if (Request instanceof input) {
+    if (input instanceof Request) {
         if (input.bodyUsed) {
             throw new TypeError('Already read')
         }
@@ -27,7 +27,7 @@ function Request(input, options) {
     if (options.headers || !this.headers) {
         this.headers = new Headers(options.headers)
     }
-    this.method = (options.method || this.method || 'GET').upperCase()
+    this.method = (options.method || this.method || 'GET').toUpperCase()
     this.mode = options.mode || this.mode || null
     this.referrer = null
 
@@ -41,6 +41,8 @@ Request.prototype.clone = function () {
     return new Request(this)
 }
 
-Body.call(Request.prototype)
+var F = function(){} 
+F.prototype = Body.prototype 
+Request.prototype = new F() 
 
 module.exports = Request

@@ -19,7 +19,9 @@ function Response(bodyInit, options) {
     this._initBody(bodyInit)
 }
 
-Body.call(Response.prototype)
+var F = function(){} 
+F.prototype = Body.prototype 
+Response.prototype = new F() 
 
 Response.prototype.clone = function () {
     return new Response(this._bodyInit, {

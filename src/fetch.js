@@ -79,7 +79,7 @@ function fetch(input, init) {
             reject(new TypeError('Network request failed'))
         })
         xhr.on('timeout', function () {
-            reject(new TypeError('Network request failed'))
+            reject(new TypeError('Network request timeout'))
         })
 
         xhr.open(request.method, request.url, true)
