@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="avalon.js"></script>
+        <script src="index.js"></script>
+        <script>
+            avalon.define({
+                $id: 'test',
+                name: '司徒正美',
+                aaa: '',
+                bbb: ''
+            })
+            avalon.fetch('/getAjax?aaa=1&&bb=2',{
+                method: 'GET'
+            }).then(function(a){
+                return a.json()
+            }).then(function(a){
+                console.log(a)
+            })
+            
+            avalon.fetch('/postAJax', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    firstParam: 'yourValue',
+                    secondParam: 'yourOtherValue',
+                })
+            }).then(function(a){
+                return a.json()
+            }).then(function(a){
+                console.log(a)
+            })
+            
+            function toQueryString(obj) {
+                return obj ? Object.keys(obj).sort().map(function (key) {
+                    var val = obj[key];
+                    if (Array.isArray(val)) {
+                        return val.sort().map(function (val2) {
+                            return encodeURIComponent(key) + '=' + encodeURIComponent(val2);
+                        }).join('&');
+                    }
+
+                    return encodeURIComponent(key) + '=' + encodeURIComponent(val);
+                }).join('&') : '';
+            }
+            avalon.fetch('/postAJax', {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'x-www-form-urlencoded'
+                },
+                body: toQueryString({ 
+                    'name': 'aaa',
+                    'pw':'bbb' 
+                })
+            }).then(function(a){
+                return a.json()
+            }).then(function(a){
+                console.log(a)
+            }) 
+
+        
+ 
+
+        </script>
+    </head>
+    <body>
+        <div ms-controller="test">
+            {{@name}}
+            <form action="/form.html" type="GET">
+                <input name="aaa" ms-duplex="@aaa"/>
+                <input name="password" ms-duplex="@bbb" type="password"/>
+                <p><input type="submit" value="submit" /></p>
+            </form>
+        </div>
+
+    </body>
+</html>
