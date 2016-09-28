@@ -106,7 +106,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        } else {
 	            request = new Request(input, init)
 	        }
-	        request.headers.set('X-Requested-With', 'XMLHttpRequest')
+	     
 
 	        var xhr = new Transport(request)
 	        function responseURL() {
@@ -173,7 +173,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.url = input.url
 	        this.credentials = input.credentials
 	        if (!options.headers) {
-	            this.headers = new Headers(input.headers)
+	            var h = this.headers = new Headers(input.headers)
+	            if(!h.map['x-requested-with']){
+	                h.set('X-Requested-With', 'XMLHttpRequest')
+	            }
 	        }
 	        this.method = input.method
 	        this.mode = input.mode

@@ -50,7 +50,7 @@ function fetch(input, init) {
         } else {
             request = new Request(input, init)
         }
-        request.headers.set('X-Requested-With', 'XMLHttpRequest')
+     
 
         var xhr = new Transport(request)
         function responseURL() {
