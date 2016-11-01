@@ -1,6 +1,6 @@
 {
   "name": "fetch-polyfill2",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "fetch polyfill which supports all mainstream browsers, even IE6, IE7, IE8.....",
   "main": "dist/index.js",
   "directories": {
