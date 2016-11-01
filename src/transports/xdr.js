@@ -15,7 +15,7 @@ module.exports = function XDR(opts) {
     xhr.onabort = function () {
         events = {}
     }
-    if (opts.timeout === 'number') {
+    if (typeof opts.timeout === 'number') {
         xhr.timeout = opts.timeout
     }
     return xhr

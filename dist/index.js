@@ -147,8 +147,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        xhr.send(typeof request._body === 'undefined' ? null : request._body)
 	    })
 	}
-
-	if (!/[native code]/.test(window.fetch)) {
+	function notFunc(a){
+	  return  !/\scode\]\s+\}$/.test(a)
+	}
+	if (notFunc(window.fetch)) {
 	    window.fetch = fetch
 	}
 	if (typeof avalon === 'function') {
@@ -708,7 +710,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        url += (url.indexOf('?') === -1) ? '?' : '&';
 	        xhr.setAttribute('src', url + jsonpCallback + '=' + callbackFunction);
 	        head.insertBefore(xhr, head.firstChild)
-	        if (opts.timeout === 'number') {
+	        if (typeof opts.timeout === 'number') {
 	            setTimeout(function () {
 	                events['timeout'] && events['timeout']()
 	                xhr.abort()
@@ -767,7 +769,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    xhr.onabort = function () {
 	        events = {}
 	    }
-	    if (opts.timeout === 'number') {
+	    if (typeof opts.timeout === 'number') {
 	        xhr.timeout = opts.timeout
 	    }
 	    return xhr

@@ -40,7 +40,7 @@ function JSONP(opts) {
         url += (url.indexOf('?') === -1) ? '?' : '&';
         xhr.setAttribute('src', url + jsonpCallback + '=' + callbackFunction);
         head.insertBefore(xhr, head.firstChild)
-        if (opts.timeout === 'number') {
+        if (typeof opts.timeout === 'number') {
             setTimeout(function () {
                 events['timeout'] && events['timeout']()
                 xhr.abort()

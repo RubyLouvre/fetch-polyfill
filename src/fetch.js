@@ -91,8 +91,10 @@ function fetch(input, init) {
         xhr.send(typeof request._body === 'undefined' ? null : request._body)
     })
 }
-
-if (!/[native code]/.test(window.fetch)) {
+function notFunc(a){
+  return  !/\scode\]\s+\}$/.test(a)
+}
+if (notFunc(window.fetch)) {
     window.fetch = fetch
 }
 if (typeof avalon === 'function') {
