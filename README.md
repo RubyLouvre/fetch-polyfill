@@ -7,13 +7,9 @@ $ npm install bluebird -- save
 $ npm install json3 -- save
 ```
 
-
-
-![](flow.jpg)
-
 ### HTML
 
-```
+```html
 <script src='path-to-node_modules/bulebird/bluebird.js' ></script>
 <!--or other promise polyfill library-->
 <script src='path-to-node_modules/json3/json3.js' ></script>
@@ -29,6 +25,9 @@ fetch('/users.html')
 ```
 
 >It is strongly recommended that these three libraries be packaged together with webpack
+
+
+![](flow.jpg)
 
 ### JSON
 
