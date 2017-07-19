@@ -13,14 +13,22 @@ $ npm install json3 -- save
 
 ### HTML
 
-```javascript
+```
+<script src='path-to-node_modules/bulebird/bluebird.js' ></script>
+<!--or other promise polyfill library-->
+<script src='path-to-node_modules/json3/json3.js' ></script>
+<script src='path-to-node_modules/fetch-polyfill2/dist/index.js' ></script>
+<script>
 fetch('/users.html')
   .then(function(response) {
     return response.text()
   }).then(function(body) {
     document.body.innerHTML = body
   })
+</script>
 ```
+
+>It is strongly recommended that these three libraries be packaged together with webpack
 
 ### JSON
 
